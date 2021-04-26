@@ -1,0 +1,14 @@
+.header {
+  background-color: white;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  padding-right: 40px;
+}
+.option a {
+  display: inline-block;
+  margin: 8px 20px;
+  font-size: 18px;
+  color: black;
+}
