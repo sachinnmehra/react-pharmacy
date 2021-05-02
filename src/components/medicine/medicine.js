@@ -4,10 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./medicine.css";
 import AddMedicine from "./add-medicine/add-medicine";
 import { connect } from "react-redux";
+import Header from "../header/header";
 import { toggleAddMedshidden } from "../../Redux/add-medicine/add-meds-action";
-const Medicine = ({ toggleAddMedshidden, hidden }) => {
+const Medicine = ({ toggleAddMedshidden, medicine, hidden }) => {
   return (
     <div className="Medicine">
+      <Header />
       <div className="med-option">
         <h1 class="med-head">Medicine</h1>
         <Button
@@ -31,13 +33,15 @@ const Medicine = ({ toggleAddMedshidden, hidden }) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>disprin</td>
-            <td>avil</td>
-            <td>O</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-          </tr>
+          {medicine.map((item) => (
+            <tr>
+              <td>{item.name}</td>
+              <td>{item.ManufacturerName}</td>
+              <td>{item.Price}</td>
+              <td>{item.Stock}</td>
+              <td>{item.Discount}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
@@ -48,7 +52,8 @@ const mapDispatchToProps = (dispatch) => ({
   toggleAddMedshidden: () => dispatch(toggleAddMedshidden()),
 });
 
-const mapStateToProps = ({ addMedicine: { hidden } }) => ({
+const mapStateToProps = ({ addMedicine: { hidden, medicine } }) => ({
   hidden,
+  medicine,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Medicine);

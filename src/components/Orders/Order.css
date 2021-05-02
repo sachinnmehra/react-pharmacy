@@ -1,0 +1,38 @@
+.order-table {
+  margin-top: 40px;
+}
+.order-option {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 60px;
+}
+.order-head {
+  display: inline-block;
+  margin-right: 1238px;
+}
+.add-order {
+  box-shadow: 20px 0px 50px grey;
+  padding: 42px 64px;
+  position: absolute;
+  left: 600px;
+  right: 520px;
+  z-index: 10;
+  background-color: white;
+  /* display: none; */
+}
+.form-input {
+  padding: 8px 90px;
+  padding-left: 13px;
+  padding-right: 181px;
+}
+.fas {
+  font-weight: 900;
+  font-size: 28px;
+  display: block;
+  position: absolute;
+  top: 12px;
+  right: 20px;
+}
+.fas:hover {
+  color: red;
+}

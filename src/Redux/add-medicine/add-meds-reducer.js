@@ -1,12 +1,7 @@
 import { actionTypes } from "../constant";
+
 const INITIAL_STATE = {
-  medicine: {
-    name: "",
-    manufacturerName: "",
-    price: "",
-    discount: "",
-    stock: "",
-  },
+  medicine: [],
 
   hidden: true,
 };
@@ -16,6 +11,10 @@ const addMedicineReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         hidden: !state.hidden,
+      };
+    case "ADD_MEDICINE":
+      return {
+        medicine: [...state.medicine, action.payload],
       };
     default:
       return state;

@@ -3,7 +3,7 @@ import FormInput from "../form-input/form-input";
 import { Button } from "@material-ui/core";
 import "./login.css";
 import { Redirect, Link } from "react-router";
-
+import Header from "../header/header";
 class loginPage extends Component {
   state = {
     username: "",
@@ -41,9 +41,11 @@ class loginPage extends Component {
   render() {
     console.log(this.state);
 
-    const { username, password } = this.state;
+    let { username, password, loginId } = this.state;
     return (
       <div className="login">
+        <Header />
+        {/* <Header isLoggedIn={this.state.isLoggedIn} /> */}
         <form onSubmit={this.handleSubmit}>
           <FormInput
             onChange={this.handleChange}
@@ -67,7 +69,9 @@ class loginPage extends Component {
             Login
           </Button>
         </form>
-        {/* {this.state.loginId === 1 ? <Link to="/admin" /> : <Link to="/user" />} */}
+        {this.state.isLoggedIn ? (
+          <Redirect to={loginId === 1 ? "/admin" : "/sales"} />
+        ) : null}
       </div>
     );
   }

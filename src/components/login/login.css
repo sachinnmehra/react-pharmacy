@@ -1,8 +1,10 @@
 .login {
-  margin: 30px 450px;
-  /* padding: 150px; */
-
-  margin-top: 150px;
-  padding: 80px 70px;
-  box-shadow: 20px 0px 50px grey;
+  margin-top: 0;
+}
+.login > form {
+  margin-top: 140px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 90px 0px;
+  margin-left: 150px;
+  margin-right: 190px;
 }
