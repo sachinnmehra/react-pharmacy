@@ -26,6 +26,11 @@ class addMedicine extends Component {
           <FormInput
             onChange={this.handleChange}
             className="add-med-form"
+            name="Id"
+          />
+          <FormInput
+            onChange={this.handleChange}
+            className="add-med-form"
             name="name"
           />
           <FormInput

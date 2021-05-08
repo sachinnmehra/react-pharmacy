@@ -1,6 +1,23 @@
 const INITIAL_STATE = {
   hidden: true,
-  user: [],
+  user: [
+    {
+      Id: "1",
+      firstName: "Sachin",
+      lastName: "Mehra",
+      dob: "15/07/1998",
+      gender: "M",
+      yearExperience: 2,
+    },
+    {
+      Id: "2",
+      firstName: "Nikhil",
+      lastName: "Arya",
+      dob: "6/01/1997",
+      gender: "M",
+      yearExperience: 2,
+    },
+  ],
 };
 
 const addUserReducer = (state = INITIAL_STATE, action) => {
@@ -13,6 +30,13 @@ const addUserReducer = (state = INITIAL_STATE, action) => {
     case "ADD_USER":
       return {
         user: [...state.user, action.payload],
+      };
+    case "REMOVE_USER":
+      return {
+        ...state,
+        user: state.user.filter(
+          (currentUser) => currentUser.Id != action.payload.Id
+        ),
       };
     default:
       return state;

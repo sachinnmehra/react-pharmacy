@@ -12,7 +12,7 @@ const Header = ({
   medicinePage,
   type,
 }) => {
-  console.log(isLoggedIn);
+  console.log("header", window.location);
   return (
     <div className="header">
       <Logo />
@@ -20,7 +20,7 @@ const Header = ({
         <Link to="/order">{orderPage}</Link>
         <Link to="/user">{userPage}</Link>
         <Link to="/medicine">{medicinePage}</Link>
-        {<Link to="/">{isLoggedIn ? "Sign Out" : "Sign in"}</Link>}
+        {<Link to="/">{isLoggedIn ? "Sign In" : "Sign out"}</Link>}
       </div>
     </div>
   );

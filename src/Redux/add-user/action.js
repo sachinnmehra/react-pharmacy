@@ -6,3 +6,8 @@ export const addUser = (item) => ({
   type: "ADD_USER",
   payload: item,
 });
+
+export const removeUser = (item) => ({
+  type: "REMOVE_USER",
+  payload: item,
+});

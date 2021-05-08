@@ -4,6 +4,7 @@ import { Button } from "@material-ui/core";
 import "./login.css";
 import { Redirect, Link } from "react-router";
 import Header from "../header/header";
+
 class loginPage extends Component {
   state = {
     username: "",
@@ -44,7 +45,8 @@ class loginPage extends Component {
     let { username, password, loginId } = this.state;
     return (
       <div className="login">
-        <Header />
+        <h1>PHARMACY</h1>
+        {/* <Header /> */}
         {/* <Header isLoggedIn={this.state.isLoggedIn} /> */}
         <form onSubmit={this.handleSubmit}>
           <FormInput

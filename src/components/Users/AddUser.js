@@ -21,6 +21,11 @@ class AddUser extends Component {
           <FormInput
             onChange={this.handleChange}
             className="add-order-form"
+            name="Id"
+          />
+          <FormInput
+            onChange={this.handleChange}
+            className="add-order-form"
             name="firstName"
           />
           <FormInput

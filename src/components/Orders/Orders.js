@@ -4,13 +4,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Order.css";
 import AddOrder from "./Addorder";
 import { connect } from "react-redux";
-import { toggleAddOrderHidden } from "../../Redux/add-orders/action";
+import {
+  toggleAddOrderHidden,
+  clearItemFromOrders,
+} from "../../Redux/add-orders/action";
 import Header from "../header/header";
 
-const Order = ({ toggleAddOrderHidden, order, hidden }) => {
+const Order = ({ toggleAddOrderHidden, order, hidden, clearItem }) => {
   return (
     <div className="orders">
-      <Header />
+      <Header orderPage="Order" />
       <div className="order-option">
         <h1 class="order-head">ORDERS</h1>
         <Button
@@ -32,6 +35,7 @@ const Order = ({ toggleAddOrderHidden, order, hidden }) => {
             <th scope="col">Products</th>
             <th scope="col">Quantity</th>
             <th scope="col">Total Amount</th>
+            <th scope="col">Options</th>
           </tr>
         </thead>
         <tbody>
@@ -43,6 +47,9 @@ const Order = ({ toggleAddOrderHidden, order, hidden }) => {
               <td>{item.product}</td>
               <td>{item.quantity}</td>
               <td>{item.totalAmount}</td>
+              <td>
+                <button onClick={() => clearItem(item)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -53,6 +60,7 @@ const Order = ({ toggleAddOrderHidden, order, hidden }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   toggleAddOrderHidden: () => dispatch(toggleAddOrderHidden()),
+  clearItem: (item) => dispatch(clearItemFromOrders(item)),
 });
 
 const mapStateToProps = ({ addOrder: { hidden, order } }) => ({
