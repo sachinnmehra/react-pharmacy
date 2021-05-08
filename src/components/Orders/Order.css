@@ -36,3 +36,17 @@
 .fas:hover {
   color: red;
 }
+.order__searchbar {
+  display: inline-block;
+  position: absolute;
+  left: 400px;
+  padding: 10px 60px;
+  padding-right: 120px;
+  padding-left: 10px;
+  border-radius: 18px;
+  border: none;
+}
+.order__searchbar:hover {
+  border: none;
+  color: black;
+}

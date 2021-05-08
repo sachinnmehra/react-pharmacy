@@ -38,6 +38,13 @@ const addOrderReducer = (state = INITIAL_STATE, action) => {
           (ord) => ord.orderId !== action.payload.orderId
         ),
       };
+    case "SEARCH_ORDER":
+      return {
+        ...state,
+        order: state.order.filter((val) =>
+          val.cName.toLowerCase().includes(action.payload)
+        ),
+      };
     default:
       return state;
   }

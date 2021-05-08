@@ -4,14 +4,33 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./User.css";
 import AddUser from "./AddUser";
 import { connect } from "react-redux";
-import { toggleAddUserHidden, removeUser } from "../../Redux/add-user/action";
+import {
+  toggleAddUserHidden,
+  removeUser,
+  searchUser,
+} from "../../Redux/add-user/action";
 import Header from "../header/header";
-const User = ({ toggleAddUserHidden, user, hidden, removeUser }) => {
+const User = ({
+  toggleAddUserHidden,
+  user,
+  hidden,
+  removeUser,
+  searchUser,
+}) => {
+  const handleSearchChange = (event) => {
+    searchUser(event.target.value);
+  };
   return (
     <div className="users">
       <Header orderPage="Order" userPage="User" medicinePage="medicine" />
       <div className="user-option">
         <h1 class="user-head">USERS</h1>
+        <input
+          onChange={handleSearchChange}
+          className="user__searchbar"
+          placeholder="Search"
+        />
+
         <Button
           onClick={toggleAddUserHidden}
           className="add-user-btn"
@@ -44,7 +63,13 @@ const User = ({ toggleAddUserHidden, user, hidden, removeUser }) => {
               <td>{item.gender}</td>
               <td>{item.yearExperience}</td>
               <td>
-                <button onClick={() => removeUser(item)}>Delete</button>
+                <Button
+                  onClick={() => removeUser(item)}
+                  variant="contained"
+                  color="Secondary"
+                >
+                  Delete
+                </Button>
               </td>
             </tr>
           ))}
@@ -57,6 +82,7 @@ const User = ({ toggleAddUserHidden, user, hidden, removeUser }) => {
 const mapDispatchToProps = (dispatch) => ({
   toggleAddUserHidden: () => dispatch(toggleAddUserHidden()),
   removeUser: (user) => dispatch(removeUser(user)),
+  searchUser: (user) => dispatch(searchUser(user)),
 });
 
 const mapStateToProps = ({ addUser: { hidden, user } }) => ({

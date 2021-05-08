@@ -11,3 +11,8 @@ export const removeUser = (item) => ({
   type: "REMOVE_USER",
   payload: item,
 });
+
+export const searchUser = (user) => ({
+  type: "SEARCH_USER",
+  payload: user,
+});

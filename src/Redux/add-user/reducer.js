@@ -29,6 +29,7 @@ const addUserReducer = (state = INITIAL_STATE, action) => {
       };
     case "ADD_USER":
       return {
+        ...state,
         user: [...state.user, action.payload],
       };
     case "REMOVE_USER":
@@ -36,6 +37,15 @@ const addUserReducer = (state = INITIAL_STATE, action) => {
         ...state,
         user: state.user.filter(
           (currentUser) => currentUser.Id != action.payload.Id
+        ),
+      };
+    case "SEARCH_USER":
+      return {
+        ...state,
+        user: state.user.filter(
+          (val) =>
+            val.lastName.toLowerCase().includes(action.payload) ||
+            val.firstName.toLowerCase().includes(action.payload)
         ),
       };
     default:

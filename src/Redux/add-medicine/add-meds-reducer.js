@@ -38,6 +38,15 @@ const addMedicineReducer = (state = INITIAL_STATE, action) => {
         ...state,
         medicine: state.medicine.filter((med) => med.Id !== action.payload.Id),
       };
+    case "SEARCH_MEDICINE":
+      return {
+        ...state,
+        item: state.medicine.filter(
+          (val) =>
+            val.name.toLowerCase().includes(action.payload) ||
+            val.ManufacturerName.toLowerCase().includes(action.payload)
+        ),
+      };
     default:
       return state;
   }

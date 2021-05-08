@@ -7,15 +7,30 @@ import { connect } from "react-redux";
 import {
   toggleAddOrderHidden,
   clearItemFromOrders,
+  searchOrder,
 } from "../../Redux/add-orders/action";
 import Header from "../header/header";
 
-const Order = ({ toggleAddOrderHidden, order, hidden, clearItem }) => {
+const Order = ({
+  toggleAddOrderHidden,
+  order,
+  hidden,
+  clearItem,
+  searchItem,
+}) => {
+  const handleSearchChange = (event) => {
+    searchItem(event.target.value);
+  };
   return (
     <div className="orders">
       <Header orderPage="Order" />
       <div className="order-option">
         <h1 class="order-head">ORDERS</h1>
+        <input
+          onChange={handleSearchChange}
+          className="order__searchbar"
+          placeholder="Search"
+        />
         <Button
           onClick={toggleAddOrderHidden}
           className="add-order-btn"
@@ -48,7 +63,13 @@ const Order = ({ toggleAddOrderHidden, order, hidden, clearItem }) => {
               <td>{item.quantity}</td>
               <td>{item.totalAmount}</td>
               <td>
-                <button onClick={() => clearItem(item)}>Delete</button>
+                <Button
+                  onClick={() => clearItem(item)}
+                  variant="contained"
+                  color="Secondary"
+                >
+                  Delete
+                </Button>
               </td>
             </tr>
           ))}
@@ -61,6 +82,7 @@ const Order = ({ toggleAddOrderHidden, order, hidden, clearItem }) => {
 const mapDispatchToProps = (dispatch) => ({
   toggleAddOrderHidden: () => dispatch(toggleAddOrderHidden()),
   clearItem: (item) => dispatch(clearItemFromOrders(item)),
+  searchItem: (item) => dispatch(searchOrder(item)),
 });
 
 const mapStateToProps = ({ addOrder: { hidden, order } }) => ({

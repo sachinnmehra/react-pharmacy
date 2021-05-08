@@ -8,13 +8,28 @@ import Header from "../header/header";
 import {
   toggleAddMedshidden,
   clearItemFromMedicine,
+  searchMedicine,
 } from "../../Redux/add-medicine/add-meds-action";
-const Medicine = ({ toggleAddMedshidden, medicine, hidden, clearItem }) => {
+const Medicine = ({
+  toggleAddMedshidden,
+  medicine,
+  hidden,
+  clearItem,
+  searchMedicine,
+}) => {
+  const handleSearchChange = (event) => {
+    searchMedicine(event.target.value);
+  };
   return (
     <div className="Medicine">
       <Header orderPage="Order" userPage="User" medicinePage="medicine" />
       <div className="med-option">
         <h1 class="med-head">Medicine</h1>
+        <input
+          onChange={handleSearchChange}
+          className="medicine__searchbar"
+          placeholder="Search"
+        />
         <Button
           onClick={toggleAddMedshidden}
           className="add-med-btn"
@@ -47,7 +62,13 @@ const Medicine = ({ toggleAddMedshidden, medicine, hidden, clearItem }) => {
               <td>{item.Stock}</td>
               <td>{item.Discount}</td>
               <td>
-                <button onClick={() => clearItem(item)}>Delete</button>
+                <Button
+                  onClick={() => clearItem(item)}
+                  variant="contained"
+                  color="Secondary"
+                >
+                  Delete
+                </Button>
               </td>
             </tr>
           ))}
@@ -60,6 +81,7 @@ const Medicine = ({ toggleAddMedshidden, medicine, hidden, clearItem }) => {
 const mapDispatchToProps = (dispatch) => ({
   toggleAddMedshidden: () => dispatch(toggleAddMedshidden()),
   clearItem: (item) => dispatch(clearItemFromMedicine(item)),
+  searchMedicine: (item) => dispatch(searchMedicine(item)),
 });
 
 const mapStateToProps = ({ addMedicine: { hidden, medicine } }) => ({

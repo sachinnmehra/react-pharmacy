@@ -11,3 +11,7 @@ export const clearItemFromMedicine = (item) => ({
   type: "CLEAR_ITEM_FROM_MEDICINE",
   payload: item,
 });
+export const searchMedicine = (item) => ({
+  type: "SEARCH_MEDICINE",
+  payload: item,
+});
